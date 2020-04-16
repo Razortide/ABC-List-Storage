@@ -1,0 +1,9 @@
+from ABCList import ABCList
+
+while True:
+    lists = []
+    lists.append(ABCList())
+    entry = input("Neue Liste oder EXIT? ")
+    if entry == "EXIT":
+        break
+    #TODO: Aufhübschen und aufräumen
