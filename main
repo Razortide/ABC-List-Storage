@@ -1,9 +1,21 @@
 from ABCList import ABCList
 
+lists = []
 while True:
-    lists = []
-    lists.append(ABCList())
-    entry = input("Neue Liste oder EXIT? ")
-    if entry == "EXIT":
+
+    entry = input("(N)eue Liste, Liste (E)ditieren oder Return um das Programm zu beenden? ")
+    if entry.upper()=="N":
+        lists.append(ABCList())
+    elif entry.upper()=="E":
+        print("Folgende Themen sind hinterlegt:")
+        ABCList.displayTopics()
+        input("Zu editierendes Thema soll editiert werden: ")
+        #TODO: Menüführung
+
+    elif entry == "":
+        print("Programm beendet.")
         break
+    else:
+        print("Eingabe unbekannt.")
+
     #TODO: Aufhübschen und aufräumen
