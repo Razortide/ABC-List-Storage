@@ -1,21 +1,36 @@
 from ABCList import ABCList
 
-lists = []
+lists = {}
+
+
+def displayABCListSelector():
+    # TODO: Darstellung aufhübschen
+    pass
+
+
+def compareABCLists(list1, list2):
+    # TODO: ABC Listen Vergleich schreiben
+    pass
+
+
 while True:
 
     entry = input("(N)eue Liste, Liste (E)ditieren oder Return um das Programm zu beenden? ")
-    if entry.upper()=="N":
-        lists.append(ABCList())
-    elif entry.upper()=="E":
+    if entry.upper() == "N":
+        new_abc_list = ABCList()
+        if new_abc_list.topic not in lists.keys():
+            lists[new_abc_list.topic] = []
+        lists[new_abc_list.topic].append(new_abc_list)
+    elif entry.upper() == "E":
         print("Folgende Themen sind hinterlegt:")
         ABCList.displayTopics()
-        input("Zu editierendes Thema soll editiert werden: ")
-        #TODO: Menüführung
-
+        topic = input("Zu editierendes Thema eingeben: ")
+        if topic in ABCList.topicsDict:
+            print(lists[topic])
     elif entry == "":
         print("Programm beendet.")
         break
     else:
         print("Eingabe unbekannt.")
 
-    #TODO: Aufhübschen und aufräumen
+    # TODO: Aufhübschen und aufräumen

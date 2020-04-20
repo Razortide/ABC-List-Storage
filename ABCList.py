@@ -2,14 +2,25 @@ import os
 import datetime
 import time
 
-
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 class ABCList:
     """Stores a single ABC list"""
     total_count = 0
-    topicsCount = {}
+    topicsDict = {}
+
+    def saveList(self):
+        #TODO: Implement saving list to filesystem
+        pass
+
+    def exportList(self):
+        #TODO: Implement exporting list to filesystem
+        pass
+
+    def importList():
+        #TODO: Implement importing list from filesystem
+        pass
 
     def displayList(self):
         print("Thema: {}   Nummer: {}   Datum: {}   Zeit: {}"
@@ -33,18 +44,18 @@ class ABCList:
             self.date = date
         print("Setze den {} als Datum.".format(self.date))
         ABCList.total_count += 1
-        if self.topic not in ABCList.topicsCount:
+        if self.topic not in ABCList.topicsDict:
             print("Erstelle {} als neues Thema".format(self.topic))
-            ABCList.topicsCount[self.topic] = 1
+            ABCList.topicsDict[self.topic] = 1
         else:
-            ABCList.topicsCount[self.topic] += 1
-            print("Erstelle die {}. Liste zum Thema '{}'".format(ABCList.topicsCount[self.topic], self.topic))
+            ABCList.topicsDict[self.topic] += 1
+            print("Erstelle die {}. Liste zum Thema '{}'".format(ABCList.topicsDict[self.topic], self.topic))
 
         self.content_list = {'A': [], 'B': [], 'C': [], 'D': [], 'E': [], 'F': [], 'G': [], 'H': [], 'I': [], 'J': [],
                              'K': [], 'L': [], 'M': [], 'N': [], 'O': [], 'P': [], 'Q': [], 'R': [], 'S': [], 'T': [],
                              'U': [], 'V': [], 'W': [], 'X': [], 'Y': [], 'Z': []}
 
-        self.number = ABCList.topicsCount[self.topic]
+        self.number = ABCList.topicsDict[self.topic]
         self.time = "00:00"
         self.consolidated = False  # Is used to determine if list was already consolidated before
         start_time = time.time()
@@ -77,7 +88,8 @@ class ABCList:
 
     @classmethod
     def displayTopics(cls):
-        print (cls.topicsCount.keys())
+        for key in cls.topicsDict:
+            print("{} ({})".format(key, cls.topicsDict[key]))
         #TODO: Ausgabe aufhübschen
 
     def consolidateTopic(cls, topic):
