@@ -1,6 +1,4 @@
-import os
-import datetime
-import time
+import os, datetime, time
 
 
 def cls():
@@ -8,18 +6,27 @@ def cls():
 
 
 class ABCList:
-    """Stores a single ABClist"""
+    """Stores a single ABC list"""
     total_count = 0
     topicsDict = {}
 
-    class Entry:
-        """Defines a single entry of ABC lists"""
-        def __init__(self, name: str, topic: str) -> None:
-            self.name = name
-            self.topic = topic
-            count_per_topic = {}
-            count_per_topic.setdefault(topic, 0)
-            count_per_topic[topic] += 1
+    def saveList(self):
+        # TODO: Implement saving list to filesystem
+        pass
+
+    def exportList(self):
+        # TODO: Implement exporting list to filesystem
+        pass
+
+    def importList(self):
+        # TODO: Implement importing list from filesystem
+        pass
+
+    def displayList(self) -> None:
+        print("Thema: {}   Nummer: {}   Datum: {}   Zeit: {}"
+              .format(self.topic, self.number, self.date, self.time))
+        for key, value in self.content_list.items():
+            print("{} - {}".format(key, value))
 
     def enterValue(self, entry) -> None:
         if entry[0].upper() not in self.content_list.keys():
@@ -28,7 +35,7 @@ class ABCList:
             self.content_list[entry[0].upper()].append(entry)
 
     def __init__(self) -> None:
-        self.topic = input("Thema der ABC-Liste: ")
+        self.topic = input("Thema der ABC Liste: ")
         date = input("Datum der ABC Liste (DD.MM.JJJJ): ")
         if date == "":
             self.date = "{}.{}.{}".format(datetime.date.today().day, datetime.date.today().month,
